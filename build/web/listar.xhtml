@@ -46,24 +46,25 @@
                         <h:form>
                             <p:dataTable var="requisicao" value="#{requisicaoBean.list}">
                                 <p:column headerText="CNPJ">
-                                    <h:outputText value="#{requisicaoBean.requisicao.cnpj}" />
+                                    <h:outputText value="#{requisicao.cnpj}" />
                                 </p:column>
 
                                 <p:column headerText="Protocolo">
-                                    <h:outputText value="#{requisicaoBean.requisicao.rsp}" />
+                                    <h:outputText value="#{requisicao.rsp}" />
                                 </p:column>
 
                                 <p:column headerText="Boletim Informativo">
-                                    <h:outputText value="#{requisicaoBean.requisicao.boletimInformativo}" />
+                                    <h:outputText value="#{requisicao.boletimInformativo}" />
                                 </p:column>
 
                                 <p:column headerText="Editar" class="icons">
                                     <h:commandLink action="#{requisicaoBean.edit(requisicao)}"><i class="fas fa-pen"></i></h:commandLink>
                                 </p:column>
 
-                                <p:column headerText="Excluir" class="icons">
+                                <p:column id="excluir" headerText="Excluir" class="icons">
                                     <h:commandLink action="#{requisicaoBean.delete(requisicao)}"><i class="far fa-trash-alt"></i></h:commandLink>
                                 </p:column>
+                                <p:message for="excluir" />
 
                             </p:dataTable>
                         </h:form>

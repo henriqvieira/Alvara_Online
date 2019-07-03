@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.AtividadeBean;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -24,7 +25,8 @@ public class Requisicao { //lado requerente
     private String horarioFuncionamento;
     private int area;
     private Calendar dataGeraRequisicao;
-    private List<Atividade> atividades;
+    private int atividades;
+    private Atividade atividade;
     private Status status;
     //private int data; //data da análise da requisicao
     //private int data; //data da emissão do alvará
@@ -34,11 +36,15 @@ public class Requisicao { //lado requerente
     public Requisicao() {
     }
 
-    public Requisicao(String rsp, int boletimInformativo, String cnpj, Status status) {
+    public Requisicao(String rsp, int boletimInformativo, String cnpj, String razaoSocial, String nomeFantasia, int atividades, Status status) {
         this.rsp = rsp;
         this.boletimInformativo = boletimInformativo;
         this.cnpj = cnpj;
         this.status = status;
+        this.atividades = atividades;
+        this.razaoSocial = razaoSocial;
+        this.nomeFantasia = nomeFantasia;
+        //new AtividadeBean().preencheAtividades();
     }
 
     public String getRsp() {
@@ -105,13 +111,23 @@ public class Requisicao { //lado requerente
         this.horarioFuncionamento = horarioFuncionamento;
     }
 
-    public List<Atividade> getAtividades() {
+    public Atividade getAtividade() {
+        return atividade;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
+    }
+
+    public int getAtividades() {
         return atividades;
     }
 
-    public void setAtividades(List<Atividade> atividades) {
+    public void setAtividades(int atividades) {
         this.atividades = atividades;
     }
+    
+    
 
     @Override
     public String toString() {

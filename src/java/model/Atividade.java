@@ -13,4 +13,12 @@ public class Atividade {
     private String secao; //A, B, C
     private int divisao; //01...03
     private String denominacao; //industria, comercio
+
+    public Atividade(String secao, int divisao, String denominacao) {
+        this.secao = secao;
+        this.divisao = divisao;
+        this.denominacao = denominacao;
+    }
+    
+    
 }

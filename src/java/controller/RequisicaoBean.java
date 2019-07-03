@@ -8,8 +8,11 @@ package controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import model.Atividade;
 import model.Requisicao;
 
 /**
@@ -23,6 +26,8 @@ public class RequisicaoBean implements Serializable {
     private static final long serialVersionUID = 356240640918386194L;
     private Requisicao requisicao = new Requisicao();
     private List<Requisicao> list;
+    private List<Atividade> atividades;
+    Atividade atividade = new Atividade("C", 3, "Varejo");
     List<String> listStatus;
     
 
@@ -35,12 +40,13 @@ public class RequisicaoBean implements Serializable {
     }
 
     public List<Requisicao> getList() {
+        this.list = requisicao.list();
         return list;
     }
 
     public void setLista(List<Requisicao> lista) {
         this.list = lista;
-    }
+    }    
 
     public String edit(Requisicao request) { // editar STATUS, TEMPO DE ALVARÁ, ATIVIDADES, ...
         //não esquece o new
@@ -82,6 +88,7 @@ public class RequisicaoBean implements Serializable {
         System.out.println("Entrou no excluir!!");
         request.delete();
         list = requisicao.list();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Requisição excluída"));
         return "listar";
     }
 
