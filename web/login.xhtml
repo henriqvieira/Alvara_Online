@@ -23,13 +23,13 @@
                         <p:commandButton value="ENVIAR" styleClass="regCommandButton" ajax="false" validateClient="true" action="#{usuarioBean.validar()}"/>
                     </h:panelGrid>
                     <div id="msg3">
-                        <h:commandLink  action="editarSenha" value="Esqueci minha senha"/>
+                        <h:link  outcome="editarSenha" value="Esqueci minha senha"/>
                     </div>
 
                     
                     <div id="msg2">
                         Ainda não possui acesso?
-                        <h:commandLink  action="cadastrarUsuario" value="Cadastre-se"/>
+                        <h:link  outcome="cadastrarUsuario" value="Cadastre-se"/>
                     </div>
 
                 </p:panel>
