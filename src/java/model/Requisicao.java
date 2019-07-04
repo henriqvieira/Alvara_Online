@@ -25,8 +25,8 @@ public class Requisicao { //lado requerente
     private String horarioFuncionamento;
     private int area;
     private Calendar dataGeraRequisicao;
-    private int atividades;
-    private Atividade atividade;
+    private String atividade;
+    //private Atividade atividade;
     private Status status;
     //private int data; //data da análise da requisicao
     //private int data; //data da emissão do alvará
@@ -36,12 +36,12 @@ public class Requisicao { //lado requerente
     public Requisicao() {
     }
 
-    public Requisicao(String rsp, int boletimInformativo, String cnpj, String razaoSocial, String nomeFantasia, int atividades, Status status) {
+    public Requisicao(String rsp, int boletimInformativo, String cnpj, String razaoSocial, String nomeFantasia, String atividades, Status status) {
         this.rsp = rsp;
         this.boletimInformativo = boletimInformativo;
         this.cnpj = cnpj;
         this.status = status;
-        this.atividades = atividades;
+        this.atividade = atividade;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
         //zznew AtividadeBean().preencheAtividades();
@@ -111,20 +111,20 @@ public class Requisicao { //lado requerente
         this.horarioFuncionamento = horarioFuncionamento;
     }
 
-    public Atividade getAtividade() {
+//    public Atividade getAtividade() {
+//        return atividade;
+//    }
+//
+//    public void setAtividade(Atividade atividade) {
+//        this.atividade = atividade;
+//    }
+
+    public String getAtividade() {
         return atividade;
     }
 
-    public void setAtividade(Atividade atividade) {
+    public void setAtividade(String atividade) {
         this.atividade = atividade;
-    }
-
-    public int getAtividades() {
-        return atividades;
-    }
-
-    public void setAtividades(int atividades) {
-        this.atividades = atividades;
     }
     
     

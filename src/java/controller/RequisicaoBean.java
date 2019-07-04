@@ -45,8 +45,9 @@ public class RequisicaoBean implements Serializable {
     }
     
      public List<Atividade> getAtividades() {
-        this.atividades = new AtividadeBean().preencheAtividades();
-        return atividades;
+        this.atividades = atividade.list();
+        System.out.println("atividades:" + atividades.get(0));
+        return this.atividades;
     }
 
     public void setLista(List<Requisicao> lista) {

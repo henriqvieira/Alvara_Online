@@ -72,10 +72,11 @@
                                 </p:inputText>
                                 <p:message for="nomeFantasia" />
 
-                                <h:outputLabel for="atividade" value="Atividades Econômicas" />
+                                <h:outputLabel for="atividades" value="Atividades Econômicas" />
                                 <p:selectOneMenu id="atividades" value="#{requisicaoBean.requisicao.atividade}" >
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{requisicaoBean.atividades}" />
+                                    <f:selectItem itemLabel="SETOR PRIMÁRIO" itemValue="SETOR_PRIMARIO" />
+                                    <f:selectItem itemLabel="SETOR SECUNDÁRIO" itemValue="SETOR_SECUNDARIO" />
+                                    <f:selectItem itemLabel="SETOR TERCIÁRIO" itemValue="SETOR_TERCIARIO" />
                                 </p:selectOneMenu>
                                 <p:message for="atividades" />
 
