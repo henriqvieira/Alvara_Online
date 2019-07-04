@@ -44,7 +44,7 @@ public class Requisicao { //lado requerente
         this.atividades = atividades;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
-        //new AtividadeBean().preencheAtividades();
+        //zznew AtividadeBean().preencheAtividades();
     }
 
     public String getRsp() {

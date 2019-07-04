@@ -49,40 +49,31 @@
                         <h:form id="formulario">
                             <h:panelGrid class="grade" columns="1">
                                 <h:panelGrid columns="3">
-                                    <h:outputLabel value="Número: "/>
-                                    <h:inputText id="numero" value="#{requisicaoBean.requisicao.rsp}" readonly="true" label="numero" > 
-                                        <f:validateLength minimum="8" maximum="20" />
+                                    <h:outputLabel value="Nome: "/>
+                                    <h:inputText id="nome" value="#{usuarioBean.usuario.nome}" required="true" label="nome" > 
                                     </h:inputText>
-                                    <h:message for="numero" style="color:red" />
+                                    <h:message for="nome" style="color:red" />
                                 </h:panelGrid>
                                 <h:panelGrid columns="3">
-                                    <h:outputLabel value="Boletim Informativo: "/>
-                                    <h:inputText id="boletim" value="#{requisicaoBean.requisicao.boletimInformativo}" readonly="true" required="true" label="boletim"> 
-                                        <f:validateLength minimum="5" maximum="20" />
+                                    <h:outputLabel value="CPF: "/>
+                                    <h:inputText id="cpf" value="#{usuarioBean.usuario.cpf}" required="true" label="cpf" readonly="true" > 
                                     </h:inputText>
-                                    <h:message for="boletim" style="color:red" />
-                                </h:panelGrid>
+                                    <h:message for="cpf" style="color:red" />
+                                </h:panelGrid>  
                                 <h:panelGrid columns="3">
-                                    <h:outputLabel value="CNPJ: "/>
-                                    <h:inputText id="cnpj" value="#{requisicaoBean.requisicao.cnpj}" readonly="true" required="true" label="boletim"> 
-                                        <f:validateLength minimum="5" maximum="20" />
+                                    <h:outputLabel value="Senha "/>
+                                    <h:inputText id="senha" value="#{usuarioBean.usuario.senha}" required="true" label="senha"> 
+                                        <f:validateLength minimum="4" maximum="20" />
                                     </h:inputText>
-                                    <h:message for="cnpj" style="color:red" />
-                                </h:panelGrid>                        
-                                <h:panelGrid columns="3">
-                                    <h:outputLabel value="Situação: "/>
-                                    <h:inputText id="status" value="#{requisicaoBean.requisicao.status}" required="true" label="status"> 
-                                        <f:validateLength minimum="8" maximum="150" />
-                                    </h:inputText>
-                                    <h:message for="status" style="color:red" />
+                                    <h:message for="senha" style="color:red" />
                                 </h:panelGrid>   
 
                                 <h:panelGrid columns="2">
-                                    <p:commandButton styleClass="regCommandButton" value="OK" action="#{requisicaoBean.update(requisicaoBean.requisicao)}"/>
-                                    <p:commandButton styleClass="regCommandButton" value="LIMPAR" action="#{requisicaoBean.clean()}"/>
+                                    <p:commandButton styleClass="regCommandButton" value="OK" action="#{usuarioBean.atualizar(usuarioBean.usuario)}"/>
+                                    <p:commandButton styleClass="regCommandButton" value="LIMPAR" action="#{usuarioBean.limpar()}"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="1">
-                                    <p:commandButton styleClass="regCommandButton" value="VOLTAR" action="index.xhtml"/>
+                                    <p:commandButton styleClass="regCommandButton" value="VOLTAR" action="listarUsuarios.xhtml"/>
                                 </h:panelGrid>
                             </h:panelGrid>
 

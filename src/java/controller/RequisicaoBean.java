@@ -43,6 +43,11 @@ public class RequisicaoBean implements Serializable {
         this.list = requisicao.list();
         return list;
     }
+    
+     public List<Atividade> getAtividades() {
+        this.atividades = new AtividadeBean().preencheAtividades();
+        return atividades;
+    }
 
     public void setLista(List<Requisicao> lista) {
         this.list = lista;
@@ -53,14 +58,14 @@ public class RequisicaoBean implements Serializable {
         System.out.println("Entrou no editar!!");
         //Requisicao requisicao = new Requisicao();
         this.requisicao = request;
-        return "editar";
+        return "editarRequisicao";
     }
   
     public String update(Requisicao request) {
         System.out.println("Entrou no atualizar!!");
         request.update();
         //requisicao.list();
-        return "listar";
+        return "listarRequisicoes";
     }
 
     public String insert() {
@@ -69,7 +74,7 @@ public class RequisicaoBean implements Serializable {
         requisicao.insert();
         list = requisicao.list();
         clean();
-        return "listar";
+        return "listarRequisicoes";
     }
 
 //    public String validar() {
@@ -89,7 +94,7 @@ public class RequisicaoBean implements Serializable {
         request.delete();
         list = requisicao.list();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Requisição excluída"));
-        return "listar";
+        return "listarRequisicoes";
     }
 
 }

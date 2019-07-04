@@ -1,6 +1,7 @@
 package controller;
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import model.Analista;
@@ -15,7 +16,7 @@ import model.Usuario;
     private Requerente requerente = new Requerente();
     private Analista analista = new Analista();
     private Usuario usuario = new Usuario();
-    private LinkedList<Usuario> usuarios = new LinkedList();
+    private List<Usuario> list;
     private boolean editando;
 
     public Usuario getUsuario() {
@@ -35,11 +36,9 @@ import model.Usuario;
     }
 
     
-    public LinkedList<Usuario> getUsuarios() {
-        if (usuarios == null) {
-            this.usuarios = new LinkedList<>();
-        }
-        return usuarios;
+    public List<Usuario> getList() {
+        this.list = usuario.list();
+        return list;
     }
 
     public boolean isEditando() {
@@ -52,28 +51,40 @@ import model.Usuario;
 
     public String salvar() {
         if (!isEditando()) {
-            usuarios.add(new Usuario(usuario.getNome(), usuario.getCpf(), usuario.getSenha()));
+            list.add(new Usuario(usuario.getNome(), usuario.getCpf(), usuario.getSenha()));
         }
         this.usuario = new Usuario();
         setEditando(false);
-        return "listar";
+        return "listarUsuarios";
     }
 
     public String excluir(Usuario user) {
-        usuarios.remove(user);
+        list.remove(user);
+        usuario.delete();
         setEditando(false);
-        return "listar";
+        return "listarUsuarios";
     }
 
     public String editar(Usuario user) {
         this.usuario = user;
         setEditando(true);
-        return "editar";
+        return "editarUsuario";
+    }
+    
+    public String atualizar(Usuario usuario) {
+        System.out.println("Entrou no atualizar!!");
+        usuario.update();
+        //requisicao.list();
+        return "listarUsuarios";
     }
 
     public void limpar() {
         this.usuario = new Usuario();
         setEditando(false);
+    }
+    
+    public String voltar() {
+        return "listarUsuarios";
     }
 
     public String validar() {
@@ -81,7 +92,7 @@ import model.Usuario;
         if ("admin".equals(usuario.getCpf()) && "admin".equals(usuario.getSenha())) {
             this.usuarioLogado = usuario;    
             usuario = new Usuario();
-            return "index";
+            return "login";
         } else {
             return "invalido";
         }

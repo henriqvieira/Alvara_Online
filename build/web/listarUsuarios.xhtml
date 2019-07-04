@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>
+                    Alvará Online
+                </title>
+            </f:facet>
+            <h:outputStylesheet library="css" name="estilo.css"/>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"/>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="80" resizable="true" closable="true" collapsible="true" style="text-align: center">
+                    <h:graphicImage value="images\brasao.png"/>
+                    SISTEMA DE ALVARÁ ONLINE - Prefeitura Municipal de Porto Alegre
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="60" closable="true" collapsible="true" style="text-align: center">                  
+                    <p>Desenvolvimento Irla Silva</p>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="200" header="Alvará Online" collapsible="true">
+
+                    <p:menu>
+                        <p:menuitem value="Gerenciar Viabilidades" url="listar.xhtml" />                        
+                        <p:menuitem value="Análise Prévia" url="index.xhtml" />
+                        <p:menuitem value="Acompanhar Solicitação" url="cadastrarUsuario.xhtml" />
+                        <p:menuitem value="Cadastrar Usuário" url="cadastrarUsuario.xhtml" />
+                        <p:menuitem value="Baixa Alvará" url="alvara.xhtml" />
+                        <p:menuitem value="Taxa" url="taxa.xhtml" />
+                        <p:menuitem value="Verificar Autenticidade Alvará" url="alvara.xhtml" />
+                        <p:menuitem value="Legislação" url="legislacao.xhtml" />
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p:panel header="Lista de Usuarios">
+                        <h:form>
+                            <p:dataTable var="usuario" value="#{usuarioBean.list}">
+                                <p:column headerText="Nome">
+                                    <h:outputText value="#{usuario.nome}" />
+                                </p:column>
+
+                                <p:column headerText="CPF">
+                                    <h:outputText value="#{usuario.cpf}" />
+                                </p:column>
+
+                                <p:column headerText="Senha">
+                                    <h:outputText value="#{usuario.senha}" />
+                                </p:column>
+
+                                <p:column headerText="Editar" class="icons">
+                                    <h:commandLink action="#{usuarioBean.editar(usuario)}"><i class="fas fa-pen"></i></h:commandLink>
+                                </p:column>
+
+                                <p:column id="excluir" headerText="Excluir" class="icons">
+                                    <h:commandLink action="#{usuarioBean.excluir(usuario)}"><i class="far fa-trash-alt"></i></h:commandLink>
+                                </p:column>
+                                <p:message for="excluir" />
+
+                            </p:dataTable>
+                        </h:form>
+                    </p:panel>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
