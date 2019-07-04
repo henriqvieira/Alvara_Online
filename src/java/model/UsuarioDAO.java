@@ -76,7 +76,7 @@ public class UsuarioDAO {
             System.out.println("Dados Gravados!");
             return stmt.execute();
         } catch (SQLException e) {
-            System.out.println("exceção com recursos - CADASTRAR");
+            System.out.println("exceção com recursos - CADASTRAR" + e);
         }
         return false;
     }

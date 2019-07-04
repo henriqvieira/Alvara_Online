@@ -102,7 +102,7 @@ import model.Usuario;
         System.out.println("Entrou no cadastrar usuário!!");
         usuario.insert();
         //usuario.listar();
-        return "listar";
+        return "listarUsuarios";
     }
     
 }
